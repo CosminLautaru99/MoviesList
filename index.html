@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <link rel="stylesheet" href="/assets/style/bootstrap.min.css">
+    <title>Favorite Movies</title>
+</head>
+
+<body>
+    <!-- Header Banner with searchbox -->
+    <section>
+        <header class="header-banner jumbotron text-center">
+            <h1>
+                Favorite Movies
+            </h1>
+            <form id="search-box-form">
+
+                <input type="text" class="search-box" id="name"
+                    from="form-control form-control-lg"
+                    placeholder="Movies name...">
+                </input>
+
+                <button class="btn btn-primary search-button" type="submit"
+                    onclick="onSearch()" disabled>Add Movies</button>
+            </form>
+        </header>
+    </section>
+
+
+    <!-- Movies Catalog -->
+    <section class="movie-catalog">
+        <div class="row">
+            <div class="card-deck text-center col-sm" id="movie-card">
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="/assets/js/app.js"></script>
+
+</body>
+
+</html>

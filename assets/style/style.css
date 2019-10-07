@@ -1,0 +1,30 @@
+* {
+	box-sizing: none;
+}
+html body {
+	width: 100%;
+	background-color: #042a2b;
+	list-style: none;
+}
+
+.movie-catalog {
+	max-width: 900px;
+	margin: 0 auto;
+}
+#movie-card {
+	background-color: #042a2b;
+}
+
+.card button {
+	width: 90px;
+}
+.rate-box {
+	width: 160px;
+}
+.card {
+	width: 300px;
+	margin: 0 auto;
+}
+.is-hidden {
+	display: none;
+}
