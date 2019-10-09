@@ -25,6 +25,13 @@ html body {
 	width: 300px;
 	margin: 0 auto;
 }
-.is-hidden {
-	display: none;
+.info-alert {
+	display: block;
+	width: 600px;
+	margin: 0 auto;
+}
+.alert-error {
+	display: block;
+	width: 600px;
+	margin: 0 auto;
 }
