@@ -15,7 +15,6 @@ let selected_movies = []
 let selected_movies_id = []
 let movies_rating_p
 let i
-let j
 
 /* http://www.omdbapi.com/?t=Never+Back+Down+2&plot=full&apikey=5dff865c%20*/
 
@@ -61,7 +60,6 @@ function renderMovies(movies) {
 	`
 	)
 	movies_rating = document.querySelector("#rating")
-
 	movies_rating_p = document.querySelector(".rate")
 	movies_rating_form = document.querySelector(".rate-box")
 	movies_rating_button = document.querySelector(".rating-button")
@@ -70,8 +68,6 @@ function renderMovies(movies) {
 	remove_movies_card = document.querySelector(".movies-card")
 	movies_rating_button.addEventListener("click", () => submitRating())
 }
-
-/* Info */
 
 /* Disable Enable/button de search */
 function onChange_Search() {
@@ -107,9 +103,9 @@ function submitRating() {
 	movies_rating_form.classList.add("d-none")
 	movies_rating_button.card - card_body.removeChild(movies_rating_button)
 	movies_delete_button.card - card_body.removeChild(movies_delete_button)
-	movies_search_button.removeAttribute("disabled")
 	search_box_form.classList.remove("d-none")
 	info_alert.classList.add("d-none")
+	movies_name.addEventListener("input", () => onChange_Search())
 }
 
 /* Functia de cautare filme */
@@ -118,34 +114,28 @@ function onSearch() {
 
 	searchMovies().then(response => {
 		renderMovies(movies_data[0])
+		movies_name.removeEventListener("input", onChange_A_Function, false)
 		movies_rating.addEventListener("input", () => onChange())
 		movies_search_button.setAttribute("disabled", true)
 		movies_name.value = ""
-		search_box_form.classList.add("d-none")
 		info_alert.classList.remove("d-none")
-		selected_movies_id.push(movies_data.imdbID)
 		for (i = 0; i < selected_movies_id.length; i++) {
-			for (j = 1; j < selected_movies_id.length + 1; j++) {
-				if (i == j) {
-					j++
-				}
-				if (selected_movies_id[i] == selected_movies_id[j]) {
-					console.log(`i=${i}, j=${j}`)
-					console.log(
-						`${selected_movies_id[i - 1]}, ${
-							selected_movies_id[j]
-						} `
-					)
-					deleteMovies()
-					info_alert.classList.add("d-none")
-					alert_error.classList.remove("d-none")
-					search_box_form.classList.remove("d-none")
-					setTimeout(function() {
-						alert_error.classList.add("d-none")
-					}, 2000)
-				} else console.log("a functionat")
+			if (selected_movies_id[i] == movies_data.imdbID) {
+				console.log(`i=${i}`)
+				console.log(`${selected_movies_id}`)
+
+				deleteMovies()
+
+				info_alert.classList.add("d-none")
+				alert_error.classList.remove("d-none")
+				search_box_form.classList.remove("d-none")
+				setTimeout(function() {
+					alert_error.classList.add("d-none")
+				}, 2000)
+				break
 			}
 		}
+		selected_movies_id.push(movies_data.imdbID)
 	})
 }
 
@@ -156,4 +146,6 @@ function deleteMovies() {
 	info_alert.classList.add("d-none")
 }
 
-movies_name.addEventListener("input", () => onChange_Search())
+/* Event Listener */
+const onChange_A_Function = () => onChange_Search()
+movies_name.addEventListener("input", onChange_A_Function)
